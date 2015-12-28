@@ -9,16 +9,16 @@ _start:
 
 	# write our string to stdout
 
-	movl    $len,%edx           # third argument: message length
-	movl    $msg,%ecx           # second argument: pointer to message to write
-	movl    $1,%ebx             # first argument: file handle (stdout)
-	movl    $4,%eax             # system call number (sys_write)
+	movq    $len,%rdx           # third argument: message length
+	movq    $msg,%rcx           # second argument: pointer to message to write
+	movq    $1,%rbx             # first argument: file handle (stdout)
+	movq    $4,%rax             # system call number (sys_write)
 	int     $0x80               # call kernel
 
 	# and exit
 
-	movl    $0,%ebx             # first argument: exit code
-	movl    $1,%eax             # system call number (sys_exit)
+	movq    $0,%rbx             # first argument: exit code
+	movq    $1,%rax             # system call number (sys_exit)
 	int     $0x80               # call kernel
 
 .data                           # section declaration
